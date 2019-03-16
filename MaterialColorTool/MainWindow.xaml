@@ -1,0 +1,566 @@
+﻿<Window x:Class="MaterialColorTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MaterialColorTool"
+        mc:Ignorable="d"
+        Title="Material Color Tool" Width="800" Height="750" ResizeMode="NoResize" Loaded="Window_Loaded" Background="#3F4349">
+    <Window.Resources>
+        <FontFamily x:Key="RobotoFont">/MaterialColorTool;component/Fonts/#Roboto</FontFamily>
+        <FontFamily x:Key="RobotoLightFont">D:\C#Projekte\MaterialColorTool\MaterialColorTool\Fonts\Roboto-Light.ttf</FontFamily>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <!-- Preview -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="90*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="28*"/>
+                <RowDefinition Height="120*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Name="previewBG2" Grid.Row="4" Grid.ColumnSpan="4"></Rectangle>
+            <Rectangle Name="previewBG3" Grid.Row="4" Grid.ColumnSpan="4" Grid.RowSpan="2"></Rectangle>
+            <Image Source="{DynamicResource IconSource}" Grid.Row="5" Grid.ColumnSpan="4" Width="150" RenderOptions.BitmapScalingMode="HighQuality">
+                <Image.Effect>
+                    <DropShadowEffect BlurRadius="15" Opacity="0.4"/>
+                </Image.Effect>
+            </Image>
+            <Rectangle Name="previewBG1" Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="2" Fill="#3F4349">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.3" Direction="270" BlurRadius="15"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <Rectangle Name="previewHeaderBar" Grid.Row="1" Grid.ColumnSpan="4" Fill="#3F4349">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.3" Direction="270" BlurRadius="15"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <Rectangle Name="previewTopBar" Grid.ColumnSpan="4" Fill="#3F4349">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.3" Direction="270" BlurRadius="15"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <TextBlock Name="previewMenu1Text" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontFamily="/MaterialColorTool;component/Fonts/#Roboto"></TextBlock>
+            <TextBlock Name="previewMenu2Text" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontFamily="/MaterialColorTool;component/Fonts/#Roboto"></TextBlock>
+            <TextBlock Name="previewMenu3Text" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontFamily="/MaterialColorTool;component/Fonts/#Roboto"></TextBlock>
+            <Rectangle Name="previewMenuMarker" Grid.Row="3"></Rectangle>
+            <Ellipse Name="previewButton" Grid.Row="4" Grid.Column="3" Width="45" Height="45" Fill="#3F4349">
+                <Ellipse.Effect>
+                    <DropShadowEffect Opacity="0.4" Direction="270" BlurRadius="19" ShadowDepth="7"/>
+                </Ellipse.Effect>
+            </Ellipse>
+            <Rectangle Name="previewButtonP1" Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="2"></Rectangle>
+            <Rectangle Name="previewButtonP2" Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Width="2" Height="20"></Rectangle>
+        </Grid>
+
+
+
+
+        <!-- Farbcodes -->
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Primary -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Rectangle Name="showPrimary" Grid.ColumnSpan="2" Grid.RowSpan="2"></Rectangle>
+                <TextBlock Name="showPrimaryText" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Primär</TextBlock>
+                <TextBlock Name="showPrimaryColor" TextAlignment="Center" Grid.ColumnSpan="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" PreviewMouseLeftButtonDown="ShowPrimaryColor_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="ShowPrimaryColor_PreviewMouseLeftButtonUp" MouseLeave="ShowPrimaryColor_MouseLeave"></TextBlock>
+                <Rectangle Name="showPrimaryLight" Grid.Row="2" Grid.RowSpan="2"></Rectangle>
+                <TextBlock Name="showPrimaryLightText" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Hell</TextBlock>
+                <TextBlock Name="showPrimaryLightColor" TextAlignment="Center" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" PreviewMouseLeftButtonDown="ShowPrimaryLightColor_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="ShowPrimaryLightColor_PreviewMouseLeftButtonUp" MouseLeave="ShowPrimaryLightColor_MouseLeave"></TextBlock>
+                <Rectangle Name="showPrimaryDark" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2"></Rectangle>
+                <TextBlock Name="showPrimaryDarkText" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Dunkel</TextBlock>
+                <TextBlock Name="showPrimaryDarkColor" TextAlignment="Center" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" PreviewMouseLeftButtonDown="ShowPrimaryDarkColor_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="ShowPrimaryDarkColor_PreviewMouseLeftButtonUp" MouseLeave="ShowPrimaryDarkColor_MouseLeave"></TextBlock>
+            </Grid>
+
+
+
+            <!-- Secondary -->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Rectangle Name="showSecondary" Grid.ColumnSpan="2" Grid.RowSpan="2"></Rectangle>
+                <TextBlock Name="showSecondaryText" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Sekundär</TextBlock>
+                <TextBlock Name="showSecondaryColor" TextAlignment="Center" Grid.ColumnSpan="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" PreviewMouseLeftButtonDown="ShowSecondaryColor_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="ShowSecondaryColor_PreviewMouseLeftButtonUp" MouseLeave="ShowSecondaryColor_MouseLeave"></TextBlock>
+                <Rectangle Name="showSecondaryLight" Grid.Row="2" Grid.RowSpan="2"></Rectangle>
+                <TextBlock Name="showSecondaryLightText" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Hell</TextBlock>
+                <TextBlock Name="showSecondaryLightColor" TextAlignment="Center" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" PreviewMouseLeftButtonDown="ShowSecondaryLightColor_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="ShowSecondaryLightColor_PreviewMouseLeftButtonUp" MouseLeave="ShowSecondaryLightColor_MouseLeave"></TextBlock>
+                <Rectangle Name="showSecondaryDark" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2"></Rectangle>
+                <TextBlock Name="showSecondaryDarkText" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Dunkel</TextBlock>
+                <TextBlock Name="showSecondaryDarkColor" TextAlignment="Center" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" PreviewMouseLeftButtonDown="ShowSecondaryDarkColor_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="ShowSecondaryDarkColor_PreviewMouseLeftButtonUp" MouseLeave="ShowSecondaryDarkColor_MouseLeave"></TextBlock>
+            </Grid>
+        </Grid>
+
+
+        <!-- Farbwahl -->
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <TextBlock VerticalAlignment="Center" Grid.Row="2" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Rot</TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Row="3" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Pink</TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Row="4" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Violett</TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Row="5" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Dunkelviolett</TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Row="6" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Indigo</TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Row="7" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Blau</TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Row="8" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Hellblau</TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Row="9" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Cyan</TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Row="10" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Blaugrün</TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Row="11" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Grün</TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Row="12" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Hellgrün</TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Row="13" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Limettengrün</TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Row="14" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Gelb</TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Row="15" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Bernstein</TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Row="16" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Orange</TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Row="17" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Dunkelorange</TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Row="18" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Braun</TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Row="19" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Grau</TextBlock>
+            <TextBlock VerticalAlignment="Center" Grid.Row="20" Foreground="White" HorizontalAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Blaugrau</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">50</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="2" Grid.Row="1" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">100</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="3" Grid.Row="1" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">200</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="4" Grid.Row="1" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">300</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="5" Grid.Row="1" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">400</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="6" Grid.Row="1" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">500</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="7" Grid.Row="1" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">600</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="8" Grid.Row="1" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">700</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="9" Grid.Row="1" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">800</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="10" Grid.Row="1" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">900</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="11" Grid.Row="1" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">100</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="12" Grid.Row="1" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">200</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="13" Grid.Row="1" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">400</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="14" Grid.Row="1" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">700</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="11" VerticalAlignment="Bottom" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">A</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="12" VerticalAlignment="Bottom" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">A</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="13" VerticalAlignment="Bottom" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">A</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="14" VerticalAlignment="Bottom" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">A</TextBlock>
+
+            <Rectangle Name="red50" Grid.Row="2" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Red50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Red50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="red100" Grid.Row="2" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Red100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Red100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="red200" Grid.Row="2" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Red200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Red200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="red300" Grid.Row="2" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Red300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Red300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="red400" Grid.Row="2" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Red400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Red400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="red500" Grid.Row="2" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Red500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Red500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="red600" Grid.Row="2" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Red600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Red600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="red700" Grid.Row="2" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Red700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Red700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="red800" Grid.Row="2" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Red800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Red800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="red900" Grid.Row="2" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Red900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Red900_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="reda100" Grid.Row="2" Grid.Column="11" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Reda100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Reda100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="reda200" Grid.Row="2" Grid.Column="12" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Reda200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Reda200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="reda400" Grid.Row="2" Grid.Column="13" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Reda400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Reda400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="reda700" Grid.Row="2" Grid.Column="14" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Reda700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Reda700_PreviewMouseRightButtonDown"></Rectangle>
+
+            <Rectangle Name="pink50" Grid.Row="3" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Pink50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Pink50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="pink100" Grid.Row="3" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Pink100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Pink100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="pink200" Grid.Row="3" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Pink200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Pink200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="pink300" Grid.Row="3" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Pink300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Pink300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="pink400" Grid.Row="3" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Pink400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Pink400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="pink500" Grid.Row="3" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Pink500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Pink500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="pink600" Grid.Row="3" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Pink600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Pink600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="pink700" Grid.Row="3" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Pink700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Pink700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="pink800" Grid.Row="3" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Pink800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Pink800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="pink900" Grid.Row="3" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Pink900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Pink900_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="pinka100" Grid.Row="3" Grid.Column="11" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Pinka100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Pinka100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="pinka200" Grid.Row="3" Grid.Column="12" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Pinka200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Pinka200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="pinka400" Grid.Row="3" Grid.Column="13" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Pinka400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Pinka400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="pinka700" Grid.Row="3" Grid.Column="14" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Pinka700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Pinka700_PreviewMouseRightButtonDown"></Rectangle>
+
+            <Rectangle Name="purple50" Grid.Row="4" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Purple50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Purple50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="purple100" Grid.Row="4" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Purple100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Purple100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="purple200" Grid.Row="4" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Purple200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Purple200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="purple300" Grid.Row="4" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Purple300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Purple300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="purple400" Grid.Row="4" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Purple400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Purple400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="purple500" Grid.Row="4" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Purple500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Purple500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="purple600" Grid.Row="4" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Purple600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Purple600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="purple700" Grid.Row="4" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Purple700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Purple700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="purple800" Grid.Row="4" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Purple800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Purple800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="purple900" Grid.Row="4" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Purple900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Purple900_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="purplea100" Grid.Row="4" Grid.Column="11" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Purplea100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Purplea100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="purplea200" Grid.Row="4" Grid.Column="12" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Purplea200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Purplea200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="purplea400" Grid.Row="4" Grid.Column="13" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Purplea400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Purplea400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="purplea700" Grid.Row="4" Grid.Column="14" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Purplea700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Purplea700_PreviewMouseRightButtonDown"></Rectangle>
+
+            <Rectangle Name="deeppurple50" Grid.Row="5" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeppurple50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeppurple50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeppurple100" Grid.Row="5" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeppurple100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeppurple100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeppurple200" Grid.Row="5" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeppurple200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeppurple200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeppurple300" Grid.Row="5" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeppurple300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeppurple300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeppurple400" Grid.Row="5" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeppurple400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeppurple400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeppurple500" Grid.Row="5" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeppurple500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeppurple500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeppurple600" Grid.Row="5" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeppurple600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeppurple600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeppurple700" Grid.Row="5" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeppurple700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeppurple700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeppurple800" Grid.Row="5" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeppurple800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeppurple800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeppurple900" Grid.Row="5" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeppurple900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeppurple900_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeppurplea100" Grid.Row="5" Grid.Column="11" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeppurplea100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeppurplea100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeppurplea200" Grid.Row="5" Grid.Column="12" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeppurplea200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeppurplea200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeppurplea400" Grid.Row="5" Grid.Column="13" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeppurplea400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeppurplea400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeppurplea700" Grid.Row="5" Grid.Column="14" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeppurplea700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeppurplea700_PreviewMouseRightButtonDown"></Rectangle>
+
+            <Rectangle Name="indigo50" Grid.Row="6" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Indigo50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Indigo50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="indigo100" Grid.Row="6" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Indigo100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Indigo100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="indigo200" Grid.Row="6" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Indigo200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Indigo200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="indigo300" Grid.Row="6" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Indigo300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Indigo300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="indigo400" Grid.Row="6" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Indigo400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Indigo400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="indigo500" Grid.Row="6" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Indigo500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Indigo500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="indigo600" Grid.Row="6" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Indigo600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Indigo600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="indigo700" Grid.Row="6" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Indigo700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Indigo700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="indigo800" Grid.Row="6" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Indigo800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Indigo800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="indigo900" Grid.Row="6" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Indigo900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Indigo900_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="indigoa100" Grid.Row="6" Grid.Column="11" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Indigoa100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Indigoa100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="indigoa200" Grid.Row="6" Grid.Column="12" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Indigoa200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Indigoa200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="indigoa400" Grid.Row="6" Grid.Column="13" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Indigoa400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Indigoa400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="indigoa700" Grid.Row="6" Grid.Column="14" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Indigoa700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Indigoa700_PreviewMouseRightButtonDown"></Rectangle>
+
+            <Rectangle Name="blue50" Grid.Row="7" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Blue50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Blue50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="blue100" Grid.Row="7" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Blue100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Blue100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="blue200" Grid.Row="7" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Blue200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Blue200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="blue300" Grid.Row="7" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Blue300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Blue300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="blue400" Grid.Row="7" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Blue400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Blue400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="blue500" Grid.Row="7" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Blue500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Blue500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="blue600" Grid.Row="7" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Blue600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Blue600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="blue700" Grid.Row="7" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Blue700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Blue700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="blue800" Grid.Row="7" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Blue800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Blue800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="blue900" Grid.Row="7" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Blue900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Blue900_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="bluea100" Grid.Row="7" Grid.Column="11" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Bluea100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Bluea100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="bluea200" Grid.Row="7" Grid.Column="12" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Bluea200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Bluea200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="bluea400" Grid.Row="7" Grid.Column="13" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Bluea400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Bluea400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="bluea700" Grid.Row="7" Grid.Column="14" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Bluea700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Bluea700_PreviewMouseRightButtonDown"></Rectangle>
+
+            <Rectangle Name="lightblue50" Grid.Row="8" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightblue50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightblue50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightblue100" Grid.Row="8" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightblue100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightblue100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightblue200" Grid.Row="8" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightblue200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightblue200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightblue300" Grid.Row="8" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightblue300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightblue300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightblue400" Grid.Row="8" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightblue400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightblue400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightblue500" Grid.Row="8" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightblue500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightblue500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightblue600" Grid.Row="8" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightblue600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightblue600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightblue700" Grid.Row="8" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightblue700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightblue700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightblue800" Grid.Row="8" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightblue800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightblue800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightblue900" Grid.Row="8" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightblue900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightblue900_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightbluea100" Grid.Row="8" Grid.Column="11" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightbluea100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightbluea100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightbluea200" Grid.Row="8" Grid.Column="12" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightbluea200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightbluea200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightbluea400" Grid.Row="8" Grid.Column="13" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightbluea400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightbluea400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightbluea700" Grid.Row="8" Grid.Column="14" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightbluea700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightbluea700_PreviewMouseRightButtonDown"></Rectangle>
+
+            <Rectangle Name="cyan50" Grid.Row="9" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Cyan50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Cyan50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="cyan100" Grid.Row="9" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Cyan100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Cyan100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="cyan200" Grid.Row="9" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Cyan200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Cyan200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="cyan300" Grid.Row="9" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Cyan300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Cyan300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="cyan400" Grid.Row="9" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Cyan400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Cyan400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="cyan500" Grid.Row="9" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Cyan500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Cyan500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="cyan600" Grid.Row="9" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Cyan600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Cyan600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="cyan700" Grid.Row="9" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Cyan700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Cyan700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="cyan800" Grid.Row="9" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Cyan800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Cyan800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="cyan900" Grid.Row="9" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Cyan900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Cyan900_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="cyana100" Grid.Row="9" Grid.Column="11" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Cyana100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Cyana100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="cyana200" Grid.Row="9" Grid.Column="12" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Cyana200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Cyana200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="cyana400" Grid.Row="9" Grid.Column="13" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Cyana400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Cyana400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="cyana700" Grid.Row="9" Grid.Column="14" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Cyana700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Cyana700_PreviewMouseRightButtonDown"></Rectangle>
+
+            <Rectangle Name="teal50" Grid.Row="10" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Teal50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Teal50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="teal100" Grid.Row="10" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Teal100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Teal100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="teal200" Grid.Row="10" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Teal200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Teal200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="teal300" Grid.Row="10" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Teal300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Teal300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="teal400" Grid.Row="10" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Teal400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Teal400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="teal500" Grid.Row="10" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Teal500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Teal500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="teal600" Grid.Row="10" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Teal600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Teal600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="teal700" Grid.Row="10" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Teal700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Teal700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="teal800" Grid.Row="10" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Teal800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Teal800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="teal900" Grid.Row="10" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Teal900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Teal900_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="teala100" Grid.Row="10" Grid.Column="11" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Teala100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Teala100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="teala200" Grid.Row="10" Grid.Column="12" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Teala200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Teala200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="teala400" Grid.Row="10" Grid.Column="13" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Teala400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Teala400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="teala700" Grid.Row="10" Grid.Column="14" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Teala700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Teala700_PreviewMouseRightButtonDown"></Rectangle>
+
+            <Rectangle Name="green50" Grid.Row="11" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Green50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Green50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="green100" Grid.Row="11" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Green100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Green100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="green200" Grid.Row="11" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Green200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Green200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="green300" Grid.Row="11" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Green300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Green300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="green400" Grid.Row="11" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Green400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Green400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="green500" Grid.Row="11" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Green500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Green500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="green600" Grid.Row="11" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Green600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Green600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="green700" Grid.Row="11" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Green700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Green700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="green800" Grid.Row="11" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Green800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Green800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="green900" Grid.Row="11" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Green900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Green900_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="greena100" Grid.Row="11" Grid.Column="11" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Greena100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Greena100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="greena200" Grid.Row="11" Grid.Column="12" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Greena200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Greena200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="greena400" Grid.Row="11" Grid.Column="13" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Greena400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Greena400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="greena700" Grid.Row="11" Grid.Column="14" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Greena700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Greena700_PreviewMouseRightButtonDown"></Rectangle>
+
+            <Rectangle Name="lightgreen50" Grid.Row="12" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightgreen50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightgreen50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightgreen100" Grid.Row="12" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightgreen100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightgreen100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightgreen200" Grid.Row="12" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightgreen200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightgreen200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightgreen300" Grid.Row="12" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightgreen300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightgreen300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightgreen400" Grid.Row="12" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightgreen400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightgreen400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightgreen500" Grid.Row="12" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightgreen500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightgreen500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightgreen600" Grid.Row="12" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightgreen600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightgreen600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightgreen700" Grid.Row="12" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightgreen700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightgreen700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightgreen800" Grid.Row="12" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightgreen800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightgreen800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightgreen900" Grid.Row="12" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightgreen900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightgreen900_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightgreena100" Grid.Row="12" Grid.Column="11" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightgreena100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightgreena100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightgreena200" Grid.Row="12" Grid.Column="12" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightgreena200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightgreena200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightgreena400" Grid.Row="12" Grid.Column="13" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightgreena400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightgreena400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lightgreena700" Grid.Row="12" Grid.Column="14" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lightgreena700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lightgreena700_PreviewMouseRightButtonDown"></Rectangle>
+
+            <Rectangle Name="lime50" Grid.Row="13" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lime50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lime50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lime100" Grid.Row="13" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lime100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lime100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lime200" Grid.Row="13" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lime200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lime200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lime300" Grid.Row="13" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lime300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lime300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lime400" Grid.Row="13" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lime400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lime400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lime500" Grid.Row="13" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lime500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lime500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lime600" Grid.Row="13" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lime600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lime600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lime700" Grid.Row="13" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lime700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lime700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lime800" Grid.Row="13" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lime800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lime800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="lime900" Grid.Row="13" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Lime900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Lime900_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="limea100" Grid.Row="13" Grid.Column="11" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Limea100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Limea100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="limea200" Grid.Row="13" Grid.Column="12" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Limea200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Limea200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="limea400" Grid.Row="13" Grid.Column="13" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Limea400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Limea400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="limea700" Grid.Row="13" Grid.Column="14" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Limea700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Limea700_PreviewMouseRightButtonDown"></Rectangle>
+
+            <Rectangle Name="yellow50" Grid.Row="14" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Yellow50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Yellow50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="yellow100" Grid.Row="14" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Yellow100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Yellow100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="yellow200" Grid.Row="14" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Yellow200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Yellow200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="yellow300" Grid.Row="14" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Yellow300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Yellow300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="yellow400" Grid.Row="14" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Yellow400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Yellow400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="yellow500" Grid.Row="14" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Yellow500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Yellow500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="yellow600" Grid.Row="14" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Yellow600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Yellow600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="yellow700" Grid.Row="14" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Yellow700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Yellow700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="yellow800" Grid.Row="14" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Yellow800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Yellow800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="yellow900" Grid.Row="14" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Yellow900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Yellow900_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="yellowa100" Grid.Row="14" Grid.Column="11" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Yellowa100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Yellowa100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="yellowa200" Grid.Row="14" Grid.Column="12" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Yellowa200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Yellowa200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="yellowa400" Grid.Row="14" Grid.Column="13" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Yellowa400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Yellowa400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="yellowa700" Grid.Row="14" Grid.Column="14" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Yellowa700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Yellowa700_PreviewMouseRightButtonDown"></Rectangle>
+
+            <Rectangle Name="amber50" Grid.Row="15" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Amber50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Amber50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="amber100" Grid.Row="15" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Amber100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Amber100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="amber200" Grid.Row="15" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Amber200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Amber200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="amber300" Grid.Row="15" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Amber300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Amber300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="amber400" Grid.Row="15" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Amber400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Amber400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="amber500" Grid.Row="15" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Amber500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Amber500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="amber600" Grid.Row="15" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Amber600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Amber600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="amber700" Grid.Row="15" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Amber700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Amber700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="amber800" Grid.Row="15" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Amber800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Amber800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="amber900" Grid.Row="15" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Amber900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Amber900_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="ambera100" Grid.Row="15" Grid.Column="11" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Ambera100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Ambera100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="ambera200" Grid.Row="15" Grid.Column="12" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Ambera200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Ambera200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="ambera400" Grid.Row="15" Grid.Column="13" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Ambera400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Ambera400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="ambera700" Grid.Row="15" Grid.Column="14" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Ambera700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Ambera700_PreviewMouseRightButtonDown"></Rectangle>
+
+            <Rectangle Name="orange50" Grid.Row="16" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Orange50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Orange50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="orange100" Grid.Row="16" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Orange100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Orange100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="orange200" Grid.Row="16" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Orange200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Orange200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="orange300" Grid.Row="16" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Orange300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Orange300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="orange400" Grid.Row="16" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Orange400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Orange400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="orange500" Grid.Row="16" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Orange500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Orange500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="orange600" Grid.Row="16" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Orange600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Orange600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="orange700" Grid.Row="16" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Orange700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Orange700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="orange800" Grid.Row="16" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Orange800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Orange800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="orange900" Grid.Row="16" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Orange900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Orange900_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="orangea100" Grid.Row="16" Grid.Column="11" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Orangea100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Orangea100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="orangea200" Grid.Row="16" Grid.Column="12" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Orangea200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Orangea200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="orangea400" Grid.Row="16" Grid.Column="13" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Orangea400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Orangea400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="orangea700" Grid.Row="16" Grid.Column="14" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Orangea700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Orangea700_PreviewMouseRightButtonDown"></Rectangle>
+
+            <Rectangle Name="deeporange50" Grid.Row="17" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeporange50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeporange50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeporange100" Grid.Row="17" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeporange100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeporange100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeporange200" Grid.Row="17" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeporange200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeporange200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeporange300" Grid.Row="17" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeporange300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeporange300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeporange400" Grid.Row="17" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeporange400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeporange400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeporange500" Grid.Row="17" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeporange500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeporange500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeporange600" Grid.Row="17" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeporange600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeporange600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeporange700" Grid.Row="17" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeporange700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeporange700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeporange800" Grid.Row="17" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeporange800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeporange800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeporange900" Grid.Row="17" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeporange900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeporange900_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeporangea100" Grid.Row="17" Grid.Column="11" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeporangea100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeporangea100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeporangea200" Grid.Row="17" Grid.Column="12" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeporangea200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeporangea200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeporangea400" Grid.Row="17" Grid.Column="13" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeporangea400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeporangea400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="deeporangea700" Grid.Row="17" Grid.Column="14" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Deeporangea700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Deeporangea700_PreviewMouseRightButtonDown"></Rectangle>
+
+            <Rectangle Name="brown50" Grid.Row="18" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Brown50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Brown50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="brown100" Grid.Row="18" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Brown100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Brown100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="brown200" Grid.Row="18" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Brown200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Brown200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="brown300" Grid.Row="18" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Brown300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Brown300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="brown400" Grid.Row="18" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Brown400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Brown400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="brown500" Grid.Row="18" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Brown500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Brown500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="brown600" Grid.Row="18" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Brown600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Brown600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="brown700" Grid.Row="18" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Brown700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Brown700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="brown800" Grid.Row="18" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Brown800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Brown800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="brown900" Grid.Row="18" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Brown900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Brown900_PreviewMouseRightButtonDown"></Rectangle>
+
+            <Rectangle Name="grey50" Grid.Row="19" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Grey50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Grey50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="grey100" Grid.Row="19" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Grey100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Grey100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="grey200" Grid.Row="19" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Grey200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Grey200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="grey300" Grid.Row="19" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Grey300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Grey300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="grey400" Grid.Row="19" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Grey400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Grey400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="grey500" Grid.Row="19" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Grey500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Grey500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="grey600" Grid.Row="19" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Grey600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Grey600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="grey700" Grid.Row="19" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Grey700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Grey700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="grey800" Grid.Row="19" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Grey800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Grey800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="grey900" Grid.Row="19" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Grey900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Grey900_PreviewMouseRightButtonDown"></Rectangle>
+
+            <Rectangle Name="bluegrey50" Grid.Row="20" Grid.Column="1" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Bluegrey50_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Bluegrey50_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="bluegrey100" Grid.Row="20" Grid.Column="2" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Bluegrey100_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Bluegrey100_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="bluegrey200" Grid.Row="20" Grid.Column="3" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Bluegrey200_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Bluegrey200_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="bluegrey300" Grid.Row="20" Grid.Column="4" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Bluegrey300_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Bluegrey300_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="bluegrey400" Grid.Row="20" Grid.Column="5" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Bluegrey400_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Bluegrey400_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="bluegrey500" Grid.Row="20" Grid.Column="6" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Bluegrey500_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Bluegrey500_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="bluegrey600" Grid.Row="20" Grid.Column="7" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Bluegrey600_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Bluegrey600_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="bluegrey700" Grid.Row="20" Grid.Column="8" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Bluegrey700_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Bluegrey700_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="bluegrey800" Grid.Row="20" Grid.Column="9" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Bluegrey800_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Bluegrey800_PreviewMouseRightButtonDown"></Rectangle>
+            <Rectangle Name="bluegrey900" Grid.Row="20" Grid.Column="10" MouseEnter="ColorEnter" MouseLeave="ColorLeave" PreviewMouseLeftButtonDown="Bluegrey900_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="Bluegrey900_PreviewMouseRightButtonDown"></Rectangle>
+
+            <TextBlock Name="primaryCursor" IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="#3F4349">P</TextBlock>
+            <TextBlock Name="secondaryCursor" IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="#3F4349">S</TextBlock>
+        </Grid>
+        
+        
+        
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Border PreviewMouseLeftButtonDown="Button_Click" Grid.Row="3" Grid.Column="1" Margin="10" BorderThickness="0" CornerRadius="7">
+                <Border.Effect>
+                    <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                </Border.Effect>
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Background" Value="#5F6369"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#7F8389" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#5F6369" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <TextBlock FontFamily="/MaterialColorTool;component/Fonts/#Roboto Medium" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center">RESET</TextBlock>
+            </Border>
+            <Border PreviewMouseLeftButtonDown="showCheatsheet" Grid.Row="2" Margin="10" BorderThickness="0" CornerRadius="7">
+                <Border.Effect>
+                    <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                </Border.Effect>
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Background" Value="#5F6369"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#7F8389" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#5F6369" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <TextBlock FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Medium">MATERIAL DESIGN<LineBreak/>GUIDE</TextBlock>
+            </Border>
+            <TextBlock Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="14" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Linksklick auf Farbe: Primäre Farbe wählen<LineBreak/>Rechtsklick auf Farbe: Sekundäre Farbe wählen</TextBlock>
+            <TextBlock Grid.ColumnSpan="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Linksklick auf Farbcode: Farbcode kopieren</TextBlock>
+            <TextBlock Grid.Row="2" VerticalAlignment="Bottom" FontSize="10" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto Light">Zibbo</TextBlock>
+            
+        </Grid>
+
+    </Grid>
+</Window>

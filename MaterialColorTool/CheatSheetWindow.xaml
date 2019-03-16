@@ -1,0 +1,527 @@
+﻿<Window x:Class="MaterialColorTool.CheatSheetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MaterialColorTool"
+        mc:Ignorable="d"
+        Title="Material Design Guide" Width="900" Height="650" ResizeMode="NoResize" Background="#3F4349">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <!-- Inhalte -->
+        <Grid Name="umgebungGrid" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Rectangle Fill="#455A64" Grid.Row="1" Margin="7">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" Direction="270" BlurRadius="15"/>
+                </Rectangle.Effect>
+            </Rectangle>
+
+            <Rectangle Fill="#455A64" Grid.Row="1" Grid.Column="1" Margin="7">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" Direction="270" BlurRadius="15"/>
+                </Rectangle.Effect>
+            </Rectangle>
+
+            <Rectangle Fill="#455A64" Grid.Row="3" Margin="7">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" Direction="270" BlurRadius="15"/>
+                </Rectangle.Effect>
+            </Rectangle>
+
+            <Rectangle Fill="#455A64" Grid.Row="3" Grid.Column="1" Margin="7">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" Direction="270" BlurRadius="15"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <!-- Dimensionen -->
+            <TextBlock Grid.Row="1" Foreground="White" FontSize="14" Width="400" Height="200" TextWrapping="Wrap" TextAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Ein Material kann unterschiedliche Höhen und Breiten haben.<LineBreak/>Die Tiefe beträgt immer 1dp.<LineBreak/><LineBreak/>Schatten werden nicht von alleine größer oder<LineBreak/>weicher, sondern durch das anheben eines<LineBreak/>Materials.</TextBlock>
+            <Rectangle Fill="#1565C9" Width="400">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Dimensionen</TextBlock>
+
+            <!-- Physikalische Eigenschaften -->
+            <TextBlock Grid.Row="1" Foreground="White" FontSize="14" Width="400" Height="200" TextWrapping="Wrap" TextAlignment="Center" Grid.Column="1" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Elemente auf einem Material können dieses Material nicht verlassen.<LineBreak/><LineBreak/>Materialien können sich nicht überschneiden, da sie als physikalische Objekte angesehen werden.<LineBreak/><LineBreak/>Materialien können sich nicht durch andere Materialien bewegen.</TextBlock>
+            <Rectangle Fill="#1565C9" Grid.Column="1" Width="400">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Grid.Column="1" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Physikalische Eigenschaften</TextBlock>
+            
+            <!-- Anhebung -->
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center">Menü</TextBlock>
+                <TextBlock Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">16dp</TextBlock>
+                <TextBlock Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1">Kopfleiste</TextBlock>
+                <TextBlock Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1">4dp</TextBlock>
+                <TextBlock Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2">Karte</TextBlock>
+                <TextBlock Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1">1dp bis 8dp</TextBlock>
+                <TextBlock Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="3">Schwebende Knöpfe</TextBlock>
+                <TextBlock Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1">6dp</TextBlock>
+                <TextBlock Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="4">Knöpfe</TextBlock>
+                <TextBlock Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1">2dp bis 8dp</TextBlock>
+                <TextBlock Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="5">Dialoge</TextBlock>
+                <TextBlock Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="1">24dp</TextBlock>
+            </Grid>
+            <Rectangle Fill="#1565C9" Grid.Row="2" Width="400">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Grid.Row="2" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Anhebung</TextBlock>
+            
+            <!-- Licht und Schatten -->
+            <TextBlock Grid.Row="3" Foreground="White" FontSize="14" Width="400" Height="200" TextWrapping="Wrap" TextAlignment="Center" Grid.Column="1" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Jedes Material besitzt zwei Schatten.<LineBreak/>Einen durch ein Umgebungslicht, welcher weich ist und in alle Richtungen geworfen wird und einen, der durch eine Hauptlichtquelle geworfen wird. Dieser ist härter als der erste Schatten, aber nur in eine Richtung.</TextBlock>
+            <Rectangle Fill="#1565C9" Grid.Row="2" Grid.Column="1" Width="400">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Grid.Row="2" Grid.Column="1" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Licht und Schatten</TextBlock>
+        </Grid>
+
+        <Grid Name="layoutGrid" Grid.Row="1" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Rectangle Fill="#455A64" Grid.Row="1" Margin="7">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" Direction="270" BlurRadius="15"/>
+                </Rectangle.Effect>
+            </Rectangle>
+
+            <Rectangle Fill="#455A64" Grid.Row="1" Margin="7" Grid.Column="1">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" Direction="270" BlurRadius="15"/>
+                </Rectangle.Effect>
+            </Rectangle>
+
+            <Rectangle Fill="#455A64" Grid.Row="3" Grid.ColumnSpan="2" Margin="7">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" Direction="270" BlurRadius="15"/>
+                </Rectangle.Effect>
+            </Rectangle>
+
+            <!-- Raster -->
+            <TextBlock Grid.Row="1" Foreground="White" FontSize="14" Width="400" Height="200" TextWrapping="Wrap" TextAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Grundsätzlich werden alle Materialien an einem 8dp Raster ausgerichtet. Alternativ kann ein 4dp Raster verwendet werden.</TextBlock>
+            <Rectangle Fill="#1565C9" Width="400">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Raster</TextBlock>
+            
+            <!-- Inhalte -->
+            <TextBlock Grid.Row="1" Grid.Column="1" Foreground="White" FontSize="14" Width="400" Height="200" TextWrapping="Wrap" TextAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Elemente wie Knöpfe oder Container können Icons oder Text enthalten.<LineBreak/><LineBreak/>Wenn Bilder als Inhalt verwendet werden, müssen diese das Material komplett ausfüllen.</TextBlock>
+            <Rectangle Fill="#1565C9" Width="400" Grid.Column="1">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <TextBlock FontSize="24" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Inhalt</TextBlock>
+            
+            
+            <!-- Seitenverhältnis -->
+            <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Foreground="White" FontSize="14" Width="400" Height="200" TextWrapping="Wrap" TextAlignment="Center" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Folgende Seitenverhältnisse sind empfohlen:<LineBreak/><LineBreak/>16:9<LineBreak/>3:2<LineBreak/>4:3<LineBreak/>1:1<LineBreak/>3:4<LineBreak/>2:3</TextBlock>
+            <Rectangle Fill="#1565C9" Width="400" Grid.Row="2" Grid.ColumnSpan="2">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <TextBlock FontSize="24" Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Seitenverhältnis</TextBlock>
+        </Grid>
+
+
+        <Grid Name="typoGrid" Grid.Row="1" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Rectangle Fill="#455A64" Grid.Row="1" Grid.RowSpan="3" Margin="7" Grid.ColumnSpan="2">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" Direction="270" BlurRadius="15"/>
+                </Rectangle.Effect>
+            </Rectangle>
+
+            <!-- Schriftart -->
+            <Grid Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="2">
+                <Grid.Resources>
+                    <Style TargetType="TextBlock">
+                        <Style.Setters>
+                            <Setter Property="FontSize" Value="14"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                        </Style.Setters>
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <TextBlock>Kategorie</TextBlock>
+                <TextBlock Grid.Column="1">Schriftart</TextBlock>
+                <TextBlock Grid.Column="2">Schrifttyp</TextBlock>
+                <TextBlock Grid.Column="3">Größe</TextBlock>
+                <TextBlock Grid.Column="4">Zeichengröße</TextBlock>
+                <TextBlock Grid.Column="5">Zeichenabstand</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="1">Überschrift 1</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="1">Roboto</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="1">Light</TextBlock>
+                <TextBlock Grid.Column="3" Grid.Row="1">96</TextBlock>
+                <TextBlock Grid.Column="4" Grid.Row="1">Satz</TextBlock>
+                <TextBlock Grid.Column="5" Grid.Row="1">-1,5</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="2">Überschrift 2</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="2">Roboto</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="2">Light</TextBlock>
+                <TextBlock Grid.Column="3" Grid.Row="2">60</TextBlock>
+                <TextBlock Grid.Column="4" Grid.Row="2">Satz</TextBlock>
+                <TextBlock Grid.Column="5" Grid.Row="2">-0,5</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="3">Überschrift 3</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="3">Roboto</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="3">Regular</TextBlock>
+                <TextBlock Grid.Column="3" Grid.Row="3">48</TextBlock>
+                <TextBlock Grid.Column="4" Grid.Row="3">Satz</TextBlock>
+                <TextBlock Grid.Column="5" Grid.Row="3">0</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="4">Überschrift 4</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="4">Roboto</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="4">Regular</TextBlock>
+                <TextBlock Grid.Column="3" Grid.Row="4">34</TextBlock>
+                <TextBlock Grid.Column="4" Grid.Row="4">Satz</TextBlock>
+                <TextBlock Grid.Column="5" Grid.Row="4">0,25</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="5">Überschrift 5</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="5">Roboto</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="5">Regular</TextBlock>
+                <TextBlock Grid.Column="3" Grid.Row="5">24</TextBlock>
+                <TextBlock Grid.Column="4" Grid.Row="5">Satz</TextBlock>
+                <TextBlock Grid.Column="5" Grid.Row="5">0</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="6">Überschrift 6</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="6">Roboto</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="6">Medium</TextBlock>
+                <TextBlock Grid.Column="3" Grid.Row="6">20</TextBlock>
+                <TextBlock Grid.Column="4" Grid.Row="6">Satz</TextBlock>
+                <TextBlock Grid.Column="5" Grid.Row="6">0,15</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="7">Untertitel 1</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="7">Roboto</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="7">Regular</TextBlock>
+                <TextBlock Grid.Column="3" Grid.Row="7">16</TextBlock>
+                <TextBlock Grid.Column="4" Grid.Row="7">Satz</TextBlock>
+                <TextBlock Grid.Column="5" Grid.Row="7">0,15</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="8">Untertitel 2</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="8">Roboto</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="8">Medium</TextBlock>
+                <TextBlock Grid.Column="3" Grid.Row="8">14</TextBlock>
+                <TextBlock Grid.Column="4" Grid.Row="8">Satz</TextBlock>
+                <TextBlock Grid.Column="5" Grid.Row="8">0,1</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="9">Text 1</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="9">Roboto</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="9">Regular</TextBlock>
+                <TextBlock Grid.Column="3" Grid.Row="9">16</TextBlock>
+                <TextBlock Grid.Column="4" Grid.Row="9">Satz</TextBlock>
+                <TextBlock Grid.Column="5" Grid.Row="9">0,5</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="10">Text 2</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="10">Roboto</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="10">Regular</TextBlock>
+                <TextBlock Grid.Column="3" Grid.Row="10">14</TextBlock>
+                <TextBlock Grid.Column="4" Grid.Row="10">Satz</TextBlock>
+                <TextBlock Grid.Column="5" Grid.Row="10">0,25</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="11">Knopf</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="11">Roboto</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="11">Medium</TextBlock>
+                <TextBlock Grid.Column="3" Grid.Row="11">14</TextBlock>
+                <TextBlock Grid.Column="4" Grid.Row="11">Großbuchstaben</TextBlock>
+                <TextBlock Grid.Column="5" Grid.Row="11">1,25</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="12">Beschriftung</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="12">Roboto</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="12">Regular</TextBlock>
+                <TextBlock Grid.Column="3" Grid.Row="12">12</TextBlock>
+                <TextBlock Grid.Column="4" Grid.Row="12">Satz</TextBlock>
+                <TextBlock Grid.Column="5" Grid.Row="12">0,4</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="13">Overline</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="13">Roboto</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="13">Regular</TextBlock>
+                <TextBlock Grid.Column="3" Grid.Row="13">10</TextBlock>
+                <TextBlock Grid.Column="4" Grid.Row="13">Großbuchstaben</TextBlock>
+                <TextBlock Grid.Column="5" Grid.Row="13">1,5</TextBlock>
+            </Grid>
+            <Rectangle Fill="#1565C9" Width="400" Grid.ColumnSpan="2">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <TextBlock FontSize="24" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Schriftart</TextBlock>
+        </Grid>
+
+        <Grid Name="bewegungGrid" Grid.Row="1" Visibility="Hidden">
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Style.Setters>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                    </Style.Setters>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Rectangle Fill="#455A64" Grid.Row="1" Grid.RowSpan="3" Margin="7">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" Direction="270" BlurRadius="15"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <Rectangle Fill="#455A64" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Margin="7">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" Direction="270" BlurRadius="15"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <Grid Grid.Row="1" Grid.RowSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0">Komplexität</TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="1">Dauer</TextBlock>
+                <TextBlock Grid.Row="1">Einfach (Knöpfe/Schieberegler)</TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="1">100ms</TextBlock>
+                <TextBlock Grid.Row="2">Einfach (Dialoge mit Fade in/Fade out)</TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="1" TextAlignment="Center">Fade in: 150ms<LineBreak/>Fade out: 75ms</TextBlock>
+                <TextBlock Grid.Row="3">Komplex (Animation von simplen Icons)</TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="1">200ms</TextBlock>
+                <TextBlock Grid.Row="4">Komplex (Animation von komplexen Icons)</TextBlock>
+                <TextBlock Grid.Row="4" Grid.Column="1">500ms</TextBlock>
+                <TextBlock Grid.Row="5">Menü/Karten öffnen/schließen</TextBlock>
+                <TextBlock Grid.Row="5" Grid.Column="1" TextAlignment="Center">Öffnen: 250ms<LineBreak/>Schließen: 200ms</TextBlock>
+                <TextBlock Grid.Row="6">Große Karten öffnen/schließen</TextBlock>
+                <TextBlock Grid.Row="6" Grid.Column="1" TextAlignment="Center">Öffnen: 300ms<LineBreak/>Schließen: 250ms</TextBlock>
+            </Grid>
+            <Rectangle Fill="#1565C9" Width="400">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Animationsdauer</TextBlock>
+
+            <TextBlock Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" TextAlignment="Center" TextWrapping="Wrap">Keine Animation darf linear verlaufen.<LineBreak/><LineBreak/>Standard Easing<LineBreak/>Die Animation fängt langsam am, ist in der Mitte am schnellsten und wird zum Ende hin langsamer.<LineBreak/>CSS: cubic-bezier(0.4, 0.0, 0.2, 1);<LineBreak/>After Effects: Outgoing Easing: 40%,<LineBreak/>Incoming Easing: 80%<LineBreak/><LineBreak/>Gedämpftes Easing<LineBreak/>Beginnt schnell und wird am Ende langsam.<LineBreak/>CSS: cubic-bezier(0.0, 0.0, 0.2, 1);<LineBreak/>After Effects: Outgoing Easing: 0%,<LineBreak/> Ingoing Easing: 80%<LineBreak/><LineBreak/>Beschleunigtes Easing<LineBreak/>Fängt langsam an und wird immer schneller.<LineBreak/>CSS: cubic-bezier(0.4, 0.0, 1, 1);<LineBreak/>After Effects: Outgoing Easing: 40%,<LineBreak/> Ingoing Easing: 0%</TextBlock>
+            <Rectangle Fill="#1565C9" Width="270" Grid.Column="1">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.4" BlurRadius="15" Direction="270"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <TextBlock FontSize="24" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Animationstyp</TextBlock>
+
+        </Grid>
+
+        <!-- Menü -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Effect>
+                <DropShadowEffect Opacity="0.4" Direction="270" BlurRadius="15" ShadowDepth="8"/>
+            </Grid.Effect>
+            <!-- Umgebung -->
+            <Border BorderThickness="0" PreviewMouseLeftButtonDown="Border_PreviewMouseLeftButtonDown">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Background" Value="#7F8389"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#9FA3A9" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#7F8389" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Umgebung</TextBlock>
+            </Border>
+            
+            <!-- Layout -->
+            <Border Background="#7F8389" BorderThickness="0" Grid.Column="1" PreviewMouseLeftButtonDown="Border_PreviewMouseLeftButtonDown_1">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Background" Value="#7F8389"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#9FA3A9" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#7F8389" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Layout</TextBlock>
+            </Border>
+            
+            <!-- Typografie -->
+            <Border Background="#7F8389" BorderThickness="0" Grid.Column="2" PreviewMouseLeftButtonDown="Border_PreviewMouseLeftButtonDown_2">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Background" Value="#7F8389"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#9FA3A9" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#7F8389" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Typografie</TextBlock>
+            </Border>
+
+
+            <!-- Bewegung -->
+            <Border Background="#7F8389" BorderThickness="0" Grid.Column="3" PreviewMouseLeftButtonDown="Border_PreviewMouseLeftButtonDown_4">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Background" Value="#7F8389"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#9FA3A9" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#7F8389" Duration="0:0:0.1" Storyboard.TargetProperty="Background.Color"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontFamily="/MaterialColorTool;component/Fonts/#Roboto">Animation</TextBlock>
+            </Border>
+            <Rectangle Name="menuMaker" Fill="#2196F3" Height="7" VerticalAlignment="Bottom"></Rectangle>
+        </Grid>
+
+        
+    </Grid>
+</Window>

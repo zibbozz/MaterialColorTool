@@ -1,0 +1,11 @@
+﻿<Application x:Class="MaterialColorTool.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MaterialColorTool"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <BitmapImage x:Key="IconSource" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="Images/icon_NmD_icon.ico"/>
+
+    </Application.Resources>
+</Application>

@@ -1,0 +1,15 @@
+D:\C#Projekte\MaterialColorTool\MaterialColorTool\bin\Debug\MaterialColorTool.exe.config
+D:\C#Projekte\MaterialColorTool\MaterialColorTool\bin\Debug\MaterialColorTool.exe
+D:\C#Projekte\MaterialColorTool\MaterialColorTool\bin\Debug\MaterialColorTool.pdb
+D:\C#Projekte\MaterialColorTool\MaterialColorTool\obj\Debug\MaterialColorTool.csprojAssemblyReference.cache
+D:\C#Projekte\MaterialColorTool\MaterialColorTool\obj\Debug\MainWindow.g.cs
+D:\C#Projekte\MaterialColorTool\MaterialColorTool\obj\Debug\App.g.cs
+D:\C#Projekte\MaterialColorTool\MaterialColorTool\obj\Debug\MaterialColorTool_MarkupCompile.cache
+D:\C#Projekte\MaterialColorTool\MaterialColorTool\obj\Debug\MaterialColorTool_MarkupCompile.lref
+D:\C#Projekte\MaterialColorTool\MaterialColorTool\obj\Debug\MainWindow.baml
+D:\C#Projekte\MaterialColorTool\MaterialColorTool\obj\Debug\MaterialColorTool.g.resources
+D:\C#Projekte\MaterialColorTool\MaterialColorTool\obj\Debug\MaterialColorTool.Properties.Resources.resources
+D:\C#Projekte\MaterialColorTool\MaterialColorTool\obj\Debug\MaterialColorTool.csproj.GenerateResource.cache
+D:\C#Projekte\MaterialColorTool\MaterialColorTool\obj\Debug\MaterialColorTool.csproj.CoreCompileInputs.cache
+D:\C#Projekte\MaterialColorTool\MaterialColorTool\obj\Debug\MaterialColorTool.exe
+D:\C#Projekte\MaterialColorTool\MaterialColorTool\obj\Debug\MaterialColorTool.pdb
